@@ -11,6 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>OneTwentyFourData</Name>
     <RootNamespace>OneTwentyFourData</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>Global|VisualStudio|OneTwentyFourData</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +24,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="OneTwentyFourData.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|OneTwentyFourData" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
