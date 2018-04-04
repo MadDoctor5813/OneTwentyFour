@@ -29,6 +29,7 @@ class Riding:
         self.name = ''
         self.shape = Polygon()
         self.polls = list()
+        self.ridings = list()
 
 """Gets the ridings that intersect a given polling location's shape.
 Returns a list of tuples containing the id of the riding, and the total area of their intersection.
@@ -44,9 +45,8 @@ def get_intersecting_ridings(poll_shape, ridings_dict, ridings_index):
     return intersections
 
 def assign_poll_weights(ridings_2018, ridings_index):
-    start = timeit.time.time();
-    with fiona.open('data/2014/polls/polls.shp') as polls_file_2914:
-        for poll_record in polls_file_2914:
+    with fiona.open('data/2014/polls/polls.shp') as polls_file_2014:
+        for poll_record in polls_file_2014:
             poll = Poll()
             poll.riding_id = poll_record['properties']['ED_ID']
             poll.poll_id = poll_record['properties']['POLL_DIV_1']
@@ -58,6 +58,18 @@ def assign_poll_weights(ridings_2018, ridings_index):
             for intersect in intersecting:
                 riding = ridings_2018[intersect[0]]
                 riding.polls.append((poll, intersect[1] / sum_area))
+
+def assign_riding_weights(ridings_2018, ridings_index):
+    with fiona.open('data/2014/districts/districts.shp') as ridings_file_2014:
+        for riding_record in ridings_file_2014:
+            riding_shape = shape(riding_record['geometry'])
+            intersecting = get_intersecting_ridings(riding_shape, ridings_2018, ridings_index)
+            sum_area = 0
+            for intersect in intersecting:
+                sum_area += intersect[1]
+            for intersect in intersecting:
+                riding = ridings_2018[intersect[0]]
+                riding.ridings.append((riding_record['properties']['ED_ID'], intersect[1] / sum_area))
 
 with fiona.open('data/2018/districts/districts.shp') as ridings_file_2018:
     #load in the 2018 ridings
@@ -72,7 +84,9 @@ with fiona.open('data/2018/districts/districts.shp') as ridings_file_2018:
         ridings_2018[riding.id] = riding
         riding_index.add(riding.id, riding.shape.bounds)
     assign_poll_weights(ridings_2018, riding_index)
-    end = timeit.time.time()
     print('Poll weights assigned.')
+    assign_riding_weights(ridings_2018, riding_index)
+    print('Riding weights assigned.')
+    end = timeit.time.time()
     print('Took ' + str(end - start) + ' seconds.')
   
