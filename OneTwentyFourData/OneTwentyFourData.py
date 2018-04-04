@@ -17,14 +17,18 @@ poll votes are only available on a riding scale.
 """
 
 class Poll:
-    riding_id = 0
-    poll_id = 0
+    
+    def __init__(self):
+        self.riding_id = 0
+        self.poll_id = 0
 
 class Riding:
-    id = 0
-    name = ''
-    shape = Polygon()
-    polls = list()
+
+    def __init__(self):
+        self.id = 0
+        self.name = ''
+        self.shape = Polygon()
+        self.polls = list()
 
 """Gets the ridings that intersect a given polling location's shape.
 Returns a list of tuples containing the id of the riding, and the total area of their intersection.
