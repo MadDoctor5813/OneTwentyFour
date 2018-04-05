@@ -4,6 +4,7 @@ from shapely.geometry import Polygon, shape
 import rtree
 import pprint
 import timeit
+import csv
 
 """Applies the 2014 electoral maps and results to the 2018 electoral map.
 
@@ -71,22 +72,43 @@ def assign_riding_weights(ridings_2018, ridings_index):
                 riding = ridings_2018[intersect[0]]
                 riding.ridings.append((riding_record['properties']['ED_ID'], intersect[1] / sum_area))
 
-with fiona.open('data/2018/districts/districts.shp') as ridings_file_2018:
-    #load in the 2018 ridings
-    start = timeit.time.time()
-    ridings_2018 = dict()
-    riding_index = rtree.index.Index()
-    for riding_record in ridings_file_2018:
-        riding = Riding()
-        riding.name = riding_record['properties']['ENGLISH_NA']
-        riding.id = riding_record['properties']['ED_ID']
-        riding.shape = shape(riding_record['geometry'])
-        ridings_2018[riding.id] = riding
-        riding_index.add(riding.id, riding.shape.bounds)
-    assign_poll_weights(ridings_2018, riding_index)
-    print('Poll weights assigned.')
-    assign_riding_weights(ridings_2018, riding_index)
-    print('Riding weights assigned.')
-    end = timeit.time.time()
-    print('Took ' + str(end - start) + ' seconds.')
+def load_riding_data():
+    with fiona.open('data/2018/districts/districts.shp') as ridings_file_2018:
+        ridings_2018 = dict()
+        riding_index = rtree.index.Index()
+        for riding_record in ridings_file_2018:
+            riding = Riding()
+            riding.name = riding_record['properties']['ENGLISH_NA']
+            riding.id = riding_record['properties']['ED_ID']
+            riding.shape = shape(riding_record['geometry'])
+            ridings_2018[riding.id] = riding
+            riding_index.add(riding.id, riding.shape.bounds)
+        return ridings_2018, riding_index
+
+def load_candidate_list():
+    with open('data/2014/results/candidates.csv') as candidate_file:
+        candidates = dict()
+        reader = csv.reader(candidate_file)
+        #skip header
+        next(reader)
+        for line in reader:
+            riding_candidates = dict()
+            riding_candidates['LIB'] = line[1].upper()
+            riding_candidates['PC'] = line[2].upper()
+            riding_candidates['NDP'] = line[3].upper()
+            candidates[line[0].upper()] = riding_candidates
+        return candidates
+
+def load_poll_results(candidates):
+
+
+start = timeit.time.time()
+ridings_2018, riding_index = load_riding_data()
+candidates = load_candidate_list()
+assign_poll_weights(ridings_2018, riding_index)
+print('Poll weights assigned.')
+assign_riding_weights(ridings_2018, riding_index)
+print('Riding weights assigned.')
+end = timeit.time.time()
+print('Took ' + str(end - start) + ' seconds.')
   
