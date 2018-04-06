@@ -92,10 +92,10 @@ def load_candidate_list():
         #skip header
         next(reader)
         for line in reader:
-            riding_candidates = list()
-            riding_candidates.append((line[1].upper(), 'LIB'))
-            riding_candidates.append((line[2].upper(), 'PC'))
-            riding_candidates.append((line[3].upper(), 'NDP'))
+            riding_candidates = dict()
+            riding_candidates[line[1].split(' ')[-1].upper()] = 'LIB'
+            riding_candidates[line[2].split(' ')[-1].upper()] = 'PC'
+            riding_candidates[line[3].split(' ')[-1].upper()] = 'NDP'
             candidates[line[0].upper()] = riding_candidates
         return candidates
 
