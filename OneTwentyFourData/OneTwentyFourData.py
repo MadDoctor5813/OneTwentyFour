@@ -89,11 +89,9 @@ def load_riding_data(year):
         return ridings_2018, riding_index
 
 def load_candidate_list():
-    with open('data/2014/results/candidates.csv') as candidate_file:
+    with open('data/2014/results/candidates_fixed.csv') as candidate_file:
         candidates = dict()
         reader = csv.reader(candidate_file)
-        #skip header
-        next(reader)
         for line in reader:
             riding_candidates = dict()
             riding_candidates[line[1].upper()] = 'LIB'
@@ -112,18 +110,11 @@ def load_poll_results(ridings_2014, candidates):
         col = 3
         while results.cell_value(1, col) is not '':
             candidate_name = results.cell_value(1, col)
-            candidate_list = candidates[ridings_2014[riding_num].name].items()
-            for candidate in candidate_list:
-                if candidate_name in candidate[0]:
-                    party_cols[col] = candidate[1]
-                    break
-            #if we haven't found a match assign it to other
-            if col not in party_cols.keys():
+            if candidate_name in candidates[ridings_2014[riding_num].name]:
+                party_cols[col] = candidates[ridings_2014[riding_num].name][candidate_name]
+            else:
                 party_cols[col] = 'OTH'
             col += 1
-        if 'LIB' not in party_cols.values() or 'NDP' not in party_cols.values() or 'PC' not in party_cols.values():
-            print(ridings_2014[riding_num].name)
-            print(riding_num)
     return 1
 
 start = timeit.time.time()
