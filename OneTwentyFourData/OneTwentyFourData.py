@@ -5,6 +5,9 @@ import rtree
 import pprint
 import timeit
 import csv
+import os
+import re
+import xlrd
 
 """Applies the 2014 electoral maps and results to the 2018 electoral map.
 
@@ -72,8 +75,8 @@ def assign_riding_weights(ridings_2018, ridings_index):
                 riding = ridings_2018[intersect[0]]
                 riding.ridings.append((riding_record['properties']['ED_ID'], intersect[1] / sum_area))
 
-def load_riding_data():
-    with fiona.open('data/2018/districts/districts.shp') as ridings_file_2018:
+def load_riding_data(year):
+    with fiona.open('data/' + str(year) + '/districts/districts.shp') as ridings_file_2018:
         ridings_2018 = dict()
         riding_index = rtree.index.Index()
         for riding_record in ridings_file_2018:
@@ -93,18 +96,44 @@ def load_candidate_list():
         next(reader)
         for line in reader:
             riding_candidates = dict()
-            riding_candidates[line[1].split(' ')[-1].upper()] = 'LIB'
-            riding_candidates[line[2].split(' ')[-1].upper()] = 'PC'
-            riding_candidates[line[3].split(' ')[-1].upper()] = 'NDP'
+            riding_candidates[line[1].upper()] = 'LIB'
+            riding_candidates[line[2].upper()] = 'PC'
+            riding_candidates[line[3].upper()] = 'NDP'
             candidates[line[0].upper()] = riding_candidates
         return candidates
 
-def load_poll_results(candidates):
-
+def load_poll_results(ridings_2014, candidates):
+    for result_file_name in os.listdir('data/2014/results/poll_results/'):
+        results = xlrd.open_workbook('data/2014/results/poll_results/' + result_file_name).sheet_by_index(0)
+        riding_num = int(re.findall(r'\d+', result_file_name)[0])
+        #assign result columns to party
+        party_cols = dict()
+        #names start at the third column
+        col = 3
+        while results.cell_value(1, col) is not '':
+            candidate_name = results.cell_value(1, col)
+            candidate_list = candidates[ridings_2014[riding_num].name].items()
+            for candidate in candidate_list:
+                if candidate_name in candidate[0]:
+                    party_cols[col] = candidate[1]
+                    break
+            #if we haven't found a match assign it to other
+            if col not in party_cols.keys():
+                party_cols[col] = 'OTH'
+            col += 1
+        if 'LIB' not in party_cols.values() or 'NDP' not in party_cols.values() or 'PC' not in party_cols.values():
+            print(ridings_2014[riding_num].name)
+            print(riding_num)
+    return 1
 
 start = timeit.time.time()
-ridings_2018, riding_index = load_riding_data()
+ridings_2018, riding_index = load_riding_data(2018)
+ridings_2014, _ = load_riding_data(2014)
+print('Riding data loaded.')
 candidates = load_candidate_list()
+print('Candidate list loaded.')
+results = load_poll_results(ridings_2014, candidates)
+print('2014 results loaded.')
 assign_poll_weights(ridings_2018, riding_index)
 print('Poll weights assigned.')
 assign_riding_weights(ridings_2018, riding_index)
