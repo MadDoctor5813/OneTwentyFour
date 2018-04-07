@@ -100,22 +100,88 @@ def load_candidate_list():
             candidates[line[0].upper()] = riding_candidates
         return candidates
 
+def assign_party_cols(candidates_dict, results_sheet):
+    #assign result columns to party
+    party_cols = dict()
+    #names start at the third column
+    col = 3
+    while results_sheet.cell_value(1, col) is not '':
+        candidate_name = results_sheet.cell_value(1, col)
+        if candidate_name in candidates_dict:
+            party_cols[col] = candidates_dict[candidate_name]
+        else:
+            party_cols[col] = 'OTH'
+        col += 1
+    return party_cols
+
+"""Gets the poll number from a poll name. Returns ADV if the poll is an advanced poll, or None if there was no number found
+"""
+def get_poll_number(name):
+    if name.startswith('ADV'):
+        return 'ADV'
+    digit_matches = re.findall(r'^\d+', name)
+    if len(digit_matches) > 0:
+        return int(digit_matches[0])
+    else:
+        return None
+
+"""Assigns poll results from one row. Usually returns None, but if the row being processed combines its results with another
+poll, it will return the name of that poll instead.
+"""
+def assign_row_results(row, results_sheet, party_cols, riding_results):
+    poll_name = results_sheet.cell_value(row, 0)
+    poll_number = get_poll_number(poll_name)
+    if poll_number is None:
+        return
+    poll_info_text = results_sheet.cell_value(row, 2)
+    #also check the first column because it shows up there sometimes too
+    if poll_info_text is '':
+        poll_info_text = results_sheet.cell_value(row, 1)
+    if poll_info_text is not '':
+        if 'COMBINED WITH POLL' in poll_info_text:
+            return int(re.findall(r'\d+', poll_info_text)[0])
+        if 'NO POLL TAKEN' in poll_info_text:
+            return
+    row_results = dict()
+    for col, party in party_cols.items():
+        if row_results.get(party) is None:
+            row_results[party] = 0
+        row_results[party] += int(results_sheet.cell_value(row, col))
+    if riding_results.get(poll_number) is None:
+        riding_results[poll_number] = row_results
+    else:
+        for key in row_results.keys():
+            riding_results[poll_number][key] += row_results[key]
+
+   
 def load_poll_results(ridings_2014, candidates):
+    results = dict()
     for result_file_name in os.listdir('data/2014/results/poll_results/'):
-        results = xlrd.open_workbook('data/2014/results/poll_results/' + result_file_name).sheet_by_index(0)
+        results_sheet = xlrd.open_workbook('data/2014/results/poll_results/' + result_file_name).sheet_by_index(0)
         riding_num = int(re.findall(r'\d+', result_file_name)[0])
-        #assign result columns to party
-        party_cols = dict()
-        #names start at the third column
-        col = 3
-        while results.cell_value(1, col) is not '':
-            candidate_name = results.cell_value(1, col)
-            if candidate_name in candidates[ridings_2014[riding_num].name]:
-                party_cols[col] = candidates[ridings_2014[riding_num].name][candidate_name]
-            else:
-                party_cols[col] = 'OTH'
-            col += 1
-    return 1
+        results[riding_num] = dict()
+        party_cols = assign_party_cols(candidates[ridings_2014[riding_num].name], results_sheet)
+        #WARNING: shady excel parsing past this point
+        #poll results start at two
+        row = 2
+        combined = dict()
+        #the poll results end with a totals row
+        while results_sheet.cell_value(row, 0) != 'Totals':
+            comb_poll = assign_row_results(row, results_sheet, party_cols, results[riding_num])
+            if comb_poll is not None:
+                if combined.get(comb_poll) is None:
+                    combined[comb_poll] = list()
+                combined[comb_poll].append(int(re.findall(r'\d+', results_sheet.cell_value(row, 0))[0]))
+            row += 1
+        #split combined polls back into their original assignments
+        for poll, combined in combined.items():
+            split_poll_results = results[riding_num][poll]
+            for party, result in split_poll_results.items():
+                split_poll_results[party] = result / (len(combined) + 1)
+            results[riding_num][poll] = split_poll_results
+            for combined_poll in combined:
+                results[riding_num][combined_poll] = split_poll_results
+    return results
 
 start = timeit.time.time()
 ridings_2018, riding_index = load_riding_data(2018)
