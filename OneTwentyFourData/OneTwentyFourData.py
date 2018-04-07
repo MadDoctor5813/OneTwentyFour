@@ -48,6 +48,8 @@ def get_intersecting_ridings(poll_shape, ridings_dict, ridings_index):
             intersections.append((id, intersect.area))
     return intersections
 
+"""Assigns weights of 2014 polling locations to 2018 ridings.
+"""
 def assign_poll_weights(ridings_2018, ridings_index):
     with fiona.open('data/2014/polls/polls.shp') as polls_file_2014:
         for poll_record in polls_file_2014:
@@ -63,6 +65,9 @@ def assign_poll_weights(ridings_2018, ridings_index):
                 riding = ridings_2018[intersect[0]]
                 riding.polls.append((poll, intersect[1] / sum_area))
 
+"""Assign weights of 2014 ridings to the 2018 ridings based on the area of overlap.  This is inaccurate and is used 
+only for advanced polls, which have no geographic location and cannot be assigned more precisely.
+"""
 def assign_riding_weights(ridings_2018, ridings_index):
     with fiona.open('data/2014/districts/districts.shp') as ridings_file_2014:
         for riding_record in ridings_file_2014:
@@ -75,6 +80,8 @@ def assign_riding_weights(ridings_2018, ridings_index):
                 riding = ridings_2018[intersect[0]]
                 riding.ridings.append((riding_record['properties']['ED_ID'], intersect[1] / sum_area))
 
+"""Loads riding data from a given year from the shapefiles.
+"""
 def load_riding_data(year):
     with fiona.open('data/' + str(year) + '/districts/districts.shp') as ridings_file_2018:
         ridings_2018 = dict()
@@ -88,6 +95,8 @@ def load_riding_data(year):
             riding_index.add(riding.id, riding.shape.bounds)
         return ridings_2018, riding_index
 
+"""Loads the list of candidates from the candidates file. Returns a dict of candidates by riding number.
+"""
 def load_candidate_list():
     with open('data/2014/results/candidates_fixed.csv') as candidate_file:
         candidates = dict()
@@ -100,6 +109,9 @@ def load_candidate_list():
             candidates[line[0].upper()] = riding_candidates
         return candidates
 
+"""Determines the party assignment of results in a column based on the file header and the list of candidates by riding
+and party.
+"""
 def assign_party_cols(candidates_dict, results_sheet):
     #assign result columns to party
     party_cols = dict()
@@ -153,7 +165,11 @@ def assign_row_results(row, results_sheet, party_cols, riding_results):
         for key in row_results.keys():
             riding_results[poll_number][key] += row_results[key]
 
-   
+"""Loads poll-by-poll results and returns a dict. The dict is keyed by riding id, and the values are also dicts containing
+results by poll number, keyed by party descriptor. Some polls are combined with other polling locations. The votes are split
+across all combined polls evenly after the fact. Other polls have taken no votes, they are not recorded. Advanced polls do
+not appear in the poll shapefiles and are listed under one heading, 'ADV'.
+"""
 def load_poll_results(ridings_2014, candidates):
     results = dict()
     for result_file_name in os.listdir('data/2014/results/poll_results/'):
