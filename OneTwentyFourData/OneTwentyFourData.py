@@ -8,6 +8,7 @@ import csv
 import os
 import re
 import xlrd
+import json
 
 """Applies the 2014 electoral maps and results to the 2018 electoral map.
 
@@ -42,6 +43,10 @@ class Riding:
         self.results = dict()
         self.percents = dict()
         self.swings = dict()
+
+    def json_encode(self):
+        return {'name' : self.name, 'id' : self.id, 'results' : self.results, 
+                'percents' : self.percents, 'swings' : self.swings}
 
 """Gets the ridings that intersect a given polling location's shape.
 Returns a list of tuples containing the id of the riding, and the total area of their intersection.
@@ -250,6 +255,9 @@ assign_riding_weights(ridings_2018, riding_index)
 print('Riding weights assigned.')
 calculate_results(ridings_2018, results)
 print('Results calculated.')
+json.dump(list(ridings_2018.values()), open('ridings_2018.json', 'w'), 
+          default=lambda riding: riding.json_encode(), indent=4)
+print('Outputting data to ridings_2018.json')
 end = timeit.time.time()
 print('Took ' + str(end - start) + ' seconds.')
   
