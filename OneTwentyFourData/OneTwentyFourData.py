@@ -34,6 +34,9 @@ class Riding:
         self.shape = Polygon()
         self.polls = list()
         self.ridings = list()
+        self.results = dict()
+        self.percents = dict()
+        self.swings = dict()
 
 """Gets the ridings that intersect a given polling location's shape.
 Returns a list of tuples containing the id of the riding, and the total area of their intersection.
@@ -63,7 +66,8 @@ def assign_poll_weights(ridings_2018, ridings_index):
                 sum_area += intersect[1]
             for intersect in intersecting:
                 riding = ridings_2018[intersect[0]]
-                riding.polls.append((poll, intersect[1] / sum_area))
+                weight = intersect[1] / sum_area
+                riding.polls.append((poll, weight))
 
 """Assign weights of 2014 ridings to the 2018 ridings based on the area of overlap.  This is inaccurate and is used 
 only for advanced polls, which have no geographic location and cannot be assigned more precisely.
@@ -78,6 +82,7 @@ def assign_riding_weights(ridings_2018, ridings_index):
                 sum_area += intersect[1]
             for intersect in intersecting:
                 riding = ridings_2018[intersect[0]]
+                weight = intersect[1] / sum_area
                 riding.ridings.append((riding_record['properties']['ED_ID'], intersect[1] / sum_area))
 
 """Loads riding data from a given year from the shapefiles.
@@ -199,6 +204,25 @@ def load_poll_results(ridings_2014, candidates):
                 results[riding_num][combined_poll] = split_poll_results
     return results
 
+def calculate_results(ridings_2018, results):
+    for riding in ridings_2018.values():
+        riding.results['LIB'] = 0
+        riding.results['PC'] = 0
+        riding.results['NDP'] = 0
+        riding.results['OTH'] = 0
+        for poll, weight in riding.polls:
+            try:
+                poll_results = results[poll.riding_id][poll.poll_id]
+            except KeyError:
+                #this poll was probably not taken, don't worry about it
+                pass
+            for party, result in poll_results.items():
+                riding.results[party] += result * weight
+        for riding_id, weight in riding.ridings:
+            advanced_results  = results[riding_id]['ADV']
+            for party, result in advanced_results.items():
+                riding.results[party] += result * weight
+
 start = timeit.time.time()
 ridings_2018, riding_index = load_riding_data(2018)
 ridings_2014, _ = load_riding_data(2014)
@@ -211,6 +235,8 @@ assign_poll_weights(ridings_2018, riding_index)
 print('Poll weights assigned.')
 assign_riding_weights(ridings_2018, riding_index)
 print('Riding weights assigned.')
+calculate_results(ridings_2018, results)
+print('Results calculated.')
 end = timeit.time.time()
 print('Took ' + str(end - start) + ' seconds.')
   
