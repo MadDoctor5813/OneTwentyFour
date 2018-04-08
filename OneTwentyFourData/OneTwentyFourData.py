@@ -218,10 +218,17 @@ def calculate_results(ridings_2018, results):
                 pass
             for party, result in poll_results.items():
                 riding.results[party] += result * weight
+                if riding.id == 8:
+                    print(poll.poll_id)
+                    print(party)
+                    print(result * weight)
         for riding_id, weight in riding.ridings:
             advanced_results  = results[riding_id]['ADV']
             for party, result in advanced_results.items():
                 riding.results[party] += result * weight
+                if riding.id == 8:
+                    print(party)
+                    print(result * weight)
 
 start = timeit.time.time()
 ridings_2018, riding_index = load_riding_data(2018)
