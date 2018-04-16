@@ -1,0 +1,2 @@
+What is my purpose?
+You tell Git to keep a folder.
