@@ -1,14 +1,7 @@
-﻿<!DOCTYPE html>
+﻿{% extends 'app/base.html' %}
 
 {% load static %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>OneTwentyFour</title>
-</head>
-<body>
-    Hi I'm a website.
-    <img src="{% static "app/img/taco.png" %}" />
-</body>
-</html>
+{% block content %}
+<img src="{% static 'app/img/taco.png' %}" />
+{% endblock %}
