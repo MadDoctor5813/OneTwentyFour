@@ -263,3 +263,6 @@ __pycache__/
 #Virtual Environment
 env/
 OneTwentyFourWeb/db.sqlite3
+
+#static files
+OneTwentyFourWeb/staticfiles/
