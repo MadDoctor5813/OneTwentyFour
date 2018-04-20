@@ -3,6 +3,7 @@ Definition of models.
 """
 
 from django.db import models
+from django.contrib import admin
 
 class Riding(models.Model):
     
@@ -24,3 +25,8 @@ class Riding(models.Model):
     result_oth = models.FloatField()
     percent_oth = models.FloatField()
     swing_oth = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
+admin.site.register(Riding)
