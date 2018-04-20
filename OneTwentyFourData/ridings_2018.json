@@ -22,7 +22,7 @@
         }
     },
     {
-        "name": "Scarborough\u0097Rouge Park",
+        "name": "Scarborough-Rouge Park",
         "id": 97,
         "results": {
             "LIB": 18499.92503146158,
@@ -88,7 +88,7 @@
         }
     },
     {
-        "name": "Sarnia\u0097Lambton",
+        "name": "Sarnia-Lambton",
         "id": 91,
         "results": {
             "LIB": 8173.943755312965,
@@ -110,7 +110,7 @@
         }
     },
     {
-        "name": "Beaches\u0097East York",
+        "name": "Beaches-East York",
         "id": 7,
         "results": {
             "LIB": 17505.501467601716,
@@ -132,7 +132,7 @@
         }
     },
     {
-        "name": "Mississauga\u0097Malton",
+        "name": "Mississauga-Malton",
         "id": 64,
         "results": {
             "LIB": 15199.510309385209,
@@ -176,7 +176,7 @@
         }
     },
     {
-        "name": "Haldimand\u0097Norfolk",
+        "name": "Haldimand-Norfolk",
         "id": 34,
         "results": {
             "LIB": 8460.176277031513,
@@ -198,7 +198,7 @@
         }
     },
     {
-        "name": "Thunder Bay\u0097Atikokan",
+        "name": "Thunder Bay-Atikokan",
         "id": 105,
         "results": {
             "LIB": 15312.88583282759,
@@ -242,7 +242,7 @@
         }
     },
     {
-        "name": "Scarborough\u0097Agincourt",
+        "name": "Scarborough-Agincourt",
         "id": 93,
         "results": {
             "LIB": 16046.803111362835,
@@ -264,7 +264,7 @@
         }
     },
     {
-        "name": "Markham\u0097Unionville",
+        "name": "Markham-Unionville",
         "id": 58,
         "results": {
             "LIB": 14742.105566800377,
@@ -286,7 +286,7 @@
         }
     },
     {
-        "name": "London\u0097Fanshawe",
+        "name": "London-Fanshawe",
         "id": 53,
         "results": {
             "LIB": 8048.85476488891,
@@ -308,7 +308,7 @@
         }
     },
     {
-        "name": "Stormont\u0097Dundas\u0097South Glengarry",
+        "name": "Stormont-Dundas-South Glengarry",
         "id": 102,
         "results": {
             "LIB": 9566.419377557093,
@@ -418,7 +418,7 @@
         }
     },
     {
-        "name": "Renfrew\u0097Nipissing\u0097Pembroke",
+        "name": "Renfrew-Nipissing-Pembroke",
         "id": 88,
         "results": {
             "LIB": 7830.636293828973,
@@ -440,7 +440,7 @@
         }
     },
     {
-        "name": "Barrie\u0097Innisfil",
+        "name": "Barrie-Innisfil",
         "id": 4,
         "results": {
             "LIB": 15090.467840094598,
@@ -462,7 +462,7 @@
         }
     },
     {
-        "name": "Mississauga East\u0097Cooksville",
+        "name": "Mississauga East-Cooksville",
         "id": 61,
         "results": {
             "LIB": 18612.414671216186,
@@ -550,7 +550,7 @@
         }
     },
     {
-        "name": "Hamilton West\u0097Ancaster\u0097Dundas",
+        "name": "Hamilton West-Ancaster-Dundas",
         "id": 39,
         "results": {
             "LIB": 18692.932029515992,
@@ -572,7 +572,7 @@
         }
     },
     {
-        "name": "Aurora\u0097Oak Ridges\u0097Richmond Hill",
+        "name": "Aurora-Oak Ridges-Richmond Hill",
         "id": 3,
         "results": {
             "LIB": 16055.655115672513,
@@ -616,7 +616,7 @@
         }
     },
     {
-        "name": "Mississauga\u0097Lakeshore",
+        "name": "Mississauga-Lakeshore",
         "id": 63,
         "results": {
             "LIB": 23401.310585953994,
@@ -638,7 +638,7 @@
         }
     },
     {
-        "name": "Kanata\u0097Carleton",
+        "name": "Kanata-Carleton",
         "id": 43,
         "results": {
             "LIB": 13881.824715507964,
@@ -682,7 +682,7 @@
         }
     },
     {
-        "name": "Northumberland\u0097Peterborough South",
+        "name": "Northumberland-Peterborough South",
         "id": 73,
         "results": {
             "LIB": 23125.823074309625,
@@ -704,7 +704,7 @@
         }
     },
     {
-        "name": "Newmarket\u0097Aurora",
+        "name": "Newmarket-Aurora",
         "id": 67,
         "results": {
             "LIB": 18718.13827464253,
@@ -770,7 +770,7 @@
         }
     },
     {
-        "name": "Kenora\u0097Rainy River",
+        "name": "Kenora-Rainy River",
         "id": 44,
         "results": {
             "LIB": 2399.3064303258348,
@@ -836,7 +836,7 @@
         }
     },
     {
-        "name": "Barrie\u0097Springwater\u0097Oro-Medonte",
+        "name": "Barrie-Springwater-Oro-Medonte",
         "id": 5,
         "results": {
             "LIB": 15153.319734250948,
@@ -858,7 +858,7 @@
         }
     },
     {
-        "name": "Simcoe\u0097Grey",
+        "name": "Simcoe-Grey",
         "id": 99,
         "results": {
             "LIB": 14243.198680960812,
@@ -880,7 +880,7 @@
         }
     },
     {
-        "name": "Haliburton\u0097Kawartha Lakes\u0097Brock",
+        "name": "Haliburton-Kawartha Lakes-Brock",
         "id": 35,
         "results": {
             "LIB": 17907.101973096123,
@@ -902,7 +902,7 @@
         }
     },
     {
-        "name": "Peterborough\u0097Kawartha",
+        "name": "Peterborough-Kawartha",
         "id": 86,
         "results": {
             "LIB": 23565.59368202332,
@@ -946,7 +946,7 @@
         }
     },
     {
-        "name": "Leeds\u0097Grenville\u0097Thousand Islands and Rideau Lakes",
+        "name": "Leeds-Grenville-Thousand Islands and Rideau Lakes",
         "id": 52,
         "results": {
             "LIB": 8908.331109820834,
@@ -990,7 +990,7 @@
         }
     },
     {
-        "name": "Thunder Bay\u0097Superior North",
+        "name": "Thunder Bay-Superior North",
         "id": 106,
         "results": {
             "LIB": 15634.29512162909,
@@ -1078,7 +1078,7 @@
         }
     },
     {
-        "name": "Windsor\u0097Tecumseh",
+        "name": "Windsor-Tecumseh",
         "id": 118,
         "results": {
             "LIB": 5739.304257184251,
@@ -1144,7 +1144,7 @@
         }
     },
     {
-        "name": "Mushkegowuk\u0097James Bay",
+        "name": "Mushkegowuk-James Bay",
         "id": 124,
         "results": {
             "LIB": 3015.565726673385,
@@ -1166,7 +1166,7 @@
         }
     },
     {
-        "name": "Markham\u0097Thornhill",
+        "name": "Markham-Thornhill",
         "id": 57,
         "results": {
             "LIB": 16016.404712394235,
@@ -1210,7 +1210,7 @@
         }
     },
     {
-        "name": "Mississauga\u0097Erin Mills",
+        "name": "Mississauga-Erin Mills",
         "id": 62,
         "results": {
             "LIB": 18403.5708159783,
@@ -1276,7 +1276,7 @@
         }
     },
     {
-        "name": "Scarborough\u0097Guildwood",
+        "name": "Scarborough-Guildwood",
         "id": 95,
         "results": {
             "LIB": 15708.173340847754,
@@ -1298,7 +1298,7 @@
         }
     },
     {
-        "name": "Hastings\u0097Lennox and Addington",
+        "name": "Hastings-Lennox and Addington",
         "id": 40,
         "results": {
             "LIB": 12227.167343649306,
@@ -1320,7 +1320,7 @@
         }
     },
     {
-        "name": "Lanark\u0097Frontenac\u0097Kingston",
+        "name": "Lanark-Frontenac-Kingston",
         "id": 51,
         "results": {
             "LIB": 13918.56903326686,
@@ -1408,7 +1408,7 @@
         }
     },
     {
-        "name": "Dufferin\u0097Caledon",
+        "name": "Dufferin-Caledon",
         "id": 23,
         "results": {
             "LIB": 13982.876245803818,
@@ -1452,7 +1452,7 @@
         }
     },
     {
-        "name": "Eglinton\u0097Lawrence",
+        "name": "Eglinton-Lawrence",
         "id": 25,
         "results": {
             "LIB": 23683.77102910653,
@@ -1474,7 +1474,7 @@
         }
     },
     {
-        "name": "Kitchener South\u0097Hespeler",
+        "name": "Kitchener South-Hespeler",
         "id": 49,
         "results": {
             "LIB": 12349.042604896538,
@@ -1518,7 +1518,7 @@
         }
     },
     {
-        "name": "Toronto\u0097St. Paul's",
+        "name": "Toronto-St. Paul's",
         "id": 111,
         "results": {
             "LIB": 26237.373472944357,
@@ -1540,7 +1540,7 @@
         }
     },
     {
-        "name": "King\u0097Vaughan",
+        "name": "King-Vaughan",
         "id": 45,
         "results": {
             "LIB": 19543.497002334265,
@@ -1650,7 +1650,7 @@
         }
     },
     {
-        "name": "Oakville North\u0097Burlington",
+        "name": "Oakville North-Burlington",
         "id": 75,
         "results": {
             "LIB": 17844.40124308886,
@@ -1694,7 +1694,7 @@
         }
     },
     {
-        "name": "Wellington\u0097Halton Hills",
+        "name": "Wellington-Halton Hills",
         "id": 115,
         "results": {
             "LIB": 14325.094480703823,
@@ -1738,7 +1738,7 @@
         }
     },
     {
-        "name": "Chatham-Kent\u0097Leamington",
+        "name": "Chatham-Kent-Leamington",
         "id": 18,
         "results": {
             "LIB": 9687.588263750566,
@@ -1760,7 +1760,7 @@
         }
     },
     {
-        "name": "Toronto\u0097Danforth",
+        "name": "Toronto-Danforth",
         "id": 110,
         "results": {
             "LIB": 16059.17196248375,
@@ -1782,7 +1782,7 @@
         }
     },
     {
-        "name": "Etobicoke\u0097Lakeshore",
+        "name": "Etobicoke-Lakeshore",
         "id": 29,
         "results": {
             "LIB": 23304.01460961452,
@@ -1804,7 +1804,7 @@
         }
     },
     {
-        "name": "Parkdale\u0097High Park",
+        "name": "Parkdale-High Park",
         "id": 83,
         "results": {
             "LIB": 17840.287466323953,
@@ -1826,7 +1826,7 @@
         }
     },
     {
-        "name": "University\u0097Rosedale",
+        "name": "University-Rosedale",
         "id": 112,
         "results": {
             "LIB": 21366.18505034839,
@@ -1892,7 +1892,7 @@
         }
     },
     {
-        "name": "Glengarry\u0097Prescott\u0097Russell",
+        "name": "Glengarry-Prescott-Russell",
         "id": 32,
         "results": {
             "LIB": 23948.522404601157,
@@ -1914,7 +1914,7 @@
         }
     },
     {
-        "name": "Flamborough\u0097Glanbrook",
+        "name": "Flamborough-Glanbrook",
         "id": 31,
         "results": {
             "LIB": 17362.87199593196,
@@ -1980,7 +1980,7 @@
         }
     },
     {
-        "name": "Brantford\u0097Brant",
+        "name": "Brantford-Brant",
         "id": 13,
         "results": {
             "LIB": 18555.95640185951,
@@ -2024,7 +2024,7 @@
         }
     },
     {
-        "name": "Mississauga\u0097Streetsville",
+        "name": "Mississauga-Streetsville",
         "id": 65,
         "results": {
             "LIB": 20144.36427628197,
@@ -2068,7 +2068,7 @@
         }
     },
     {
-        "name": "Markham\u0097Stouffville",
+        "name": "Markham-Stouffville",
         "id": 56,
         "results": {
             "LIB": 20503.902902853944,
@@ -2134,7 +2134,7 @@
         }
     },
     {
-        "name": "Hamilton East\u0097Stoney Creek",
+        "name": "Hamilton East-Stoney Creek",
         "id": 37,
         "results": {
             "LIB": 11686.794606865627,
@@ -2200,7 +2200,7 @@
         }
     },
     {
-        "name": "Algoma\u0097Manitoulin",
+        "name": "Algoma-Manitoulin",
         "id": 2,
         "results": {
             "LIB": 6551.14063803614,
@@ -2222,7 +2222,7 @@
         }
     },
     {
-        "name": "Timiskaming\u0097Cochrane",
+        "name": "Timiskaming-Cochrane",
         "id": 107,
         "results": {
             "LIB": 6233.437936675143,
@@ -2244,7 +2244,7 @@
         }
     },
     {
-        "name": "Ottawa\u0097Vanier",
+        "name": "Ottawa-Vanier",
         "id": 80,
         "results": {
             "LIB": 23882.598504050187,
@@ -2266,7 +2266,7 @@
         }
     },
     {
-        "name": "Ottawa West\u0097Nepean",
+        "name": "Ottawa West-Nepean",
         "id": 81,
         "results": {
             "LIB": 21878.433902605488,
@@ -2354,7 +2354,7 @@
         }
     },
     {
-        "name": "York South\u0097Weston",
+        "name": "York South-Weston",
         "id": 122,
         "results": {
             "LIB": 15803.560430935395,
@@ -2376,7 +2376,7 @@
         }
     },
     {
-        "name": "Humber River\u0097Black Creek",
+        "name": "Humber River-Black Creek",
         "id": 41,
         "results": {
             "LIB": 11898.939893700626,
@@ -2398,7 +2398,7 @@
         }
     },
     {
-        "name": "Bruce\u0097Grey\u0097Owen Sound",
+        "name": "Bruce-Grey-Owen Sound",
         "id": 14,
         "results": {
             "LIB": 11593.92324254556,
@@ -2420,7 +2420,7 @@
         }
     },
     {
-        "name": "Perth\u0097Wellington",
+        "name": "Perth-Wellington",
         "id": 85,
         "results": {
             "LIB": 13670.608946956927,
@@ -2464,7 +2464,7 @@
         }
     },
     {
-        "name": "Vaughan\u0097Woodbridge",
+        "name": "Vaughan-Woodbridge",
         "id": 113,
         "results": {
             "LIB": 19044.19072486704,
@@ -2486,7 +2486,7 @@
         }
     },
     {
-        "name": "Kitchener\u0097Conestoga",
+        "name": "Kitchener-Conestoga",
         "id": 48,
         "results": {
             "LIB": 12758.675843652389,
@@ -2508,7 +2508,7 @@
         }
     },
     {
-        "name": "Parry Sound\u0097Muskoka",
+        "name": "Parry Sound-Muskoka",
         "id": 84,
         "results": {
             "LIB": 10478.502866287734,
@@ -2530,7 +2530,7 @@
         }
     },
     {
-        "name": "Spadina\u0097Fort York",
+        "name": "Spadina-Fort York",
         "id": 101,
         "results": {
             "LIB": 20605.761012189443,
@@ -2618,7 +2618,7 @@
         }
     },
     {
-        "name": "Pickering\u0097Uxbridge",
+        "name": "Pickering-Uxbridge",
         "id": 87,
         "results": {
             "LIB": 23482.285067294048,
@@ -2640,7 +2640,7 @@
         }
     },
     {
-        "name": "York\u0097Simcoe",
+        "name": "York-Simcoe",
         "id": 121,
         "results": {
             "LIB": 14241.985611891858,
@@ -2662,7 +2662,7 @@
         }
     },
     {
-        "name": "Huron\u0097Bruce",
+        "name": "Huron-Bruce",
         "id": 42,
         "results": {
             "LIB": 15384.00009309987,
@@ -2684,7 +2684,7 @@
         }
     },
     {
-        "name": "Elgin\u0097Middlesex\u0097London",
+        "name": "Elgin-Middlesex-London",
         "id": 26,
         "results": {
             "LIB": 9102.3492054484,
@@ -2706,7 +2706,7 @@
         }
     },
     {
-        "name": "Lambton\u0097Kent\u0097Middlesex",
+        "name": "Lambton-Kent-Middlesex",
         "id": 50,
         "results": {
             "LIB": 9491.34199736878,
