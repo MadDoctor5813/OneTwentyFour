@@ -63,6 +63,7 @@
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\img\" />
     <Folder Include="app\static\app\css\" />
+    <Folder Include="app\static\app\script\" />
     <Folder Include="C:\Users\Kevin\Documents\Programming\OneTwentyFour\OneTwentyFourWeb\app\static\app\img\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
@@ -71,7 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\css\base.css" />
+    <Content Include="app\static\app\img\ridings_map.svg" />
     <Content Include="app\static\app\img\taco.png" />
+    <Content Include="app\static\app\script\main.js" />
+    <Content Include="app\static\app\script\svg-pan-zoom.min.js" />
     <Content Include="app\templates\app\base.html" />
     <Content Include="app\templates\app\main.html" />
     <Content Include="OneTwentyFourWeb\static\dummy.txt" />
