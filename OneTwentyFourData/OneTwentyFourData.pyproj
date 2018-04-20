@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9799294b-34cb-4814-958f-8fe3a2358830</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>OneTwentyFourData.py</StartupFile>
+    <StartupFile>generate_svg.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="generate_svg.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="OneTwentyFourData.py" />
   </ItemGroup>
   <ItemGroup>
