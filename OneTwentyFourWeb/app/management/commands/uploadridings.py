@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from app.models import Riding
+from app.models import Riding, PartyResult
 import json
 import os
 
@@ -13,23 +13,17 @@ class Command(BaseCommand):
         with open(file_name, 'r') as ridings_file:
             content = ridings_file.read()
             data = json.loads(content)
+            Riding.objects.all().delete()
+            PartyResult.objects.all().delete()
             for riding in data:
                 riding_model = Riding()
                 riding_model.name = riding['name']
                 riding_model.riding_id = riding['id']
-                results = riding['results']
-                riding_model.result_lib = results['LIB']
-                riding_model.result_pc = results['PC']
-                riding_model.result_ndp = results['NDP']
-                riding_model.result_oth = results['OTH']
-                swings = riding['swings']
-                riding_model.swing_lib = swings['LIB']
-                riding_model.swing_pc = swings['PC']
-                riding_model.swing_ndp = swings['NDP']
-                riding_model.swing_oth = swings['OTH']
-                percents = riding['percents']
-                riding_model.percent_lib = percents['LIB']
-                riding_model.percent_pc = percents['PC']
-                riding_model.percent_ndp = percents['NDP']
-                riding_model.percent_oth = percents['OTH']
                 riding_model.save()
+                for party_name, _ in PartyResult.PARTY_CHOICES:
+                    riding_model.results.create(
+                        party=party_name,
+                        vote_count=riding['results'][party_name],
+                        percent=riding['percents'][party_name],
+                        swing=riding['swings'][party_name]
+                    )

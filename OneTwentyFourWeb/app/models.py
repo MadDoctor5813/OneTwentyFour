@@ -3,30 +3,37 @@ Definition of models.
 """
 
 from django.db import models
-from django.contrib import admin
+
+class PartyResult(models.Model):
+
+    LIBERAL = 'LIB'
+    CONSERVATIVE = 'PC'
+    NDP = 'NDP'
+    OTHER = 'OTH'
+
+    PARTY_CHOICES = (
+        (LIBERAL, 'Liberal'),
+        (CONSERVATIVE, 'Conservative'),
+        (NDP, 'NDP'),
+        (OTHER, 'Other')
+    )
+    
+    party = models.CharField(max_length=3, choices=PARTY_CHOICES)
+
+    vote_count = models.DecimalField(max_digits=10, decimal_places=3)
+    percent = models.DecimalField(max_digits=10, decimal_places=3)
+    swing = models.DecimalField(max_digits=10, decimal_places=3)
 
 class Riding(models.Model):
     
     riding_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
-    #LIB data
-    result_lib = models.FloatField()
-    percent_lib = models.FloatField()
-    swing_lib = models.FloatField()
-    #PC data
-    result_pc = models.FloatField()
-    percent_pc = models.FloatField()
-    swing_pc = models.FloatField()
-    #NDP data
-    result_ndp = models.FloatField()
-    percent_ndp = models.FloatField()
-    swing_ndp = models.FloatField()
-    #OTH data
-    result_oth = models.FloatField()
-    percent_oth = models.FloatField()
-    swing_oth = models.FloatField()
+    
+    results = models.ManyToManyField(PartyResult)
 
     def __str__(self):
         return self.name
 
-admin.site.register(Riding)
+
+
+
