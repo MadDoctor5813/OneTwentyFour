@@ -1,0 +1,11 @@
+#riding-map {
+    width: 75%;
+    height: 100vh;
+    background: #2b65ec;
+}
+
+#riding-info {
+    width: 25%;
+    float: right;
+    font-family: 'Oswald', sans-serif;
+}

@@ -7,10 +7,51 @@
 <script type="text/javascript" src="{% static 'app/script/svg-pan-zoom.min.js' %}"></script>
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/main.css' %}" />
+{% endblock %}
+
 {% block content %}
-<div class="riding-container">
+<div class="container riding-container">
     <object id="riding-map" type="image/svg+xml" data="{% static 'app/img/ridings_map.svg' %}">
         Your browser does not support SVG.
     </object>
+    <div id="riding-info" class="container">
+        <h3 class="my-3" id="riding-name">Select a Riding</h3>
+        <h5>Projected Results:</h5>
+        <div class="row">
+            <p class="col-sm float-left">Liberal:</p>
+            <p class="col sm info-lib float-right text-right" id="riding-result-lib"></p>
+        </div>
+        <div class="row">
+            <p class="col-sm float-left">PC:</p>
+            <p class="col sm info-pc float-right text-right" id="riding-result-pc"></p>
+        </div>
+        <div class="row my-0">
+            <p class="col-sm float-left">NDP:</p>
+            <p class="col sm info-ndp float-right text-right" id="riding-result-ndp"></p>
+        </div>
+        <div class="row">
+            <p class="col-sm float-left">Other:</p>
+            <p class="col sm info-oth float-right text-right" id="riding-result-oth"></p>
+        </div>
+        <h5 class="my-3">Party Swings</h5>
+        <div class="row">
+            <p class="col-sm float-left">Liberal:</p>
+            <p class="col sm info-lib float-right text-right" id="riding-swing-lib"></p>
+        </div>
+        <div class="row">
+            <p class="col-sm float-left">PC:</p>
+            <p class="col sm info-pc float-right text-right" id="riding-swing-pc"></p>
+        </div>
+        <div class="row my-0">
+            <p class="col-sm float-left">NDP:</p>
+            <p class="col sm info-ndp float-right text-right" id="riding-swing-ndp"></p>
+        </div>
+        <div class="row">
+            <p class="col-sm float-left">Other:</p>
+            <p class="col sm info-oth float-right text-right" id="riding-swing-oth"></p>
+        </div>
+    </div>
 </div>
 {% endblock %}
