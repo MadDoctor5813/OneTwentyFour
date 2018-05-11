@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9799294b-34cb-4814-958f-8fe3a2358830</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>generate_svg.py</StartupFile>
+    <StartupFile>poll_average.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
