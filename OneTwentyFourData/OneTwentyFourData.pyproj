@@ -27,22 +27,29 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="OneTwentyFourData.py" />
+    <Compile Include="poll_average.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|VisualStudio|OneTwentyFourData" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
+    <Folder Include="data\2011\" />
+    <Folder Include="data\2011\surveys\" />
     <Folder Include="data\2014\" />
     <Folder Include="data\2014\districts\" />
     <Folder Include="data\2014\polls\" />
     <Folder Include="data\2014\results\" />
     <Folder Include="data\2014\results\poll_results\" />
+    <Folder Include="data\2014\surveys\" />
     <Folder Include="data\2018\" />
     <Folder Include="data\2018\districts\" />
     <Folder Include="data\2018\polls\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\2011\surveys\surveys.csv" />
     <Content Include="data\2014\districts\districts.dbf" />
     <Content Include="data\2014\districts\districts.prj" />
     <Content Include="data\2014\districts\districts.sbn" />
@@ -165,6 +172,7 @@
     <Content Include="data\2014\results\poll_results\Official_Results_105 FINAL.xls" />
     <Content Include="data\2014\results\poll_results\Official_Results_106 FINAL.xls" />
     <Content Include="data\2014\results\poll_results\Official_Results_107 FINAL.xls" />
+    <Content Include="data\2014\surveys\surveys.csv" />
     <Content Include="data\2018\districts\districts.dbf" />
     <Content Include="data\2018\districts\districts.prj" />
     <Content Include="data\2018\districts\districts.sbn" />
