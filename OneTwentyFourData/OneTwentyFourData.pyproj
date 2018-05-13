@@ -38,8 +38,10 @@
     <Folder Include="data\" />
     <Folder Include="data\2011\" />
     <Folder Include="C:\Users\Kevin\Documents\Programming\OneTwentyFour\OneTwentyFourData\data\2011\op_polls\" />
+    <Folder Include="data\2011\op_polls\" />
     <Folder Include="data\2014\" />
     <Folder Include="data\2014\districts\" />
+    <Folder Include="data\2014\op_polls\" />
     <Folder Include="data\2014\polls\" />
     <Folder Include="data\2014\results\" />
     <Folder Include="data\2014\results\poll_results\" />
