@@ -37,9 +37,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app\admin.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="app\forms.py" />
     <Compile Include="app\management\commands\uploadridings.py" />
     <Compile Include="app\management\commands\__init__.py">
