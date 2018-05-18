@@ -7,24 +7,17 @@ from django.http import HttpRequest, HttpResponseBadRequest, HttpResponse, Http4
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime
+import json
 
 from app.models import Riding
 
 def main(request):
-    return render(request, 'app/main.html')
-
-def get_riding_data(request, riding_id=None):
-    if riding_id is None:
-        return HttpResponseBadRequest('Riding id required.')
-    try:
-        riding = Riding.objects.get(riding_id=riding_id)
-    except ObjectDoesNotExist:
-        raise Http404('Riding not found.')
-    response_dict = dict()
-    response_dict['name'] = riding.name
-    response_dict['id'] = riding.riding_id
-    response_dict['results'] = riding.results
-    response_dict['percents'] = riding.percents
-    response_dict['swings'] = riding.swings
-    return JsonResponse(response_dict)
-    pass
+    riding_data = dict()
+    for riding in Riding.objects.all():
+        riding_obj = dict()
+        riding_obj['results'] = riding.results
+        riding_obj['percents'] = riding.percents
+        riding_obj['swings'] = riding.swings
+        riding_obj['name'] = riding.name
+        riding_data[riding.riding_id] = riding_obj
+    return render(request, 'app/main.html', context={'riding_data' : json.dumps(riding_data)})

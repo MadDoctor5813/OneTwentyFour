@@ -5,6 +5,7 @@
 {% block js %}
 <script type="text/javascript" src="{% static 'app/script/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/script/svg-pan-zoom.min.js' %}"></script>
+<script type="text/javascript">ridings={{ riding_data|safe }}</script>
 {% endblock %}
 
 {% block css %}

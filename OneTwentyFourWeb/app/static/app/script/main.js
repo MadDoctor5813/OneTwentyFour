@@ -1,16 +1,15 @@
 function updateRidingWindow(id) {
     idNumeric = id.substring(id.indexOf("_") + 1);
-    $.get("api/get_riding_data/" + idNumeric, function (data) {
-        $("#riding-name").text(data["name"]);
-        for (key in data["percents"]) {
-            selector = "#riding-result-" + key.toLowerCase();
-            $(selector).text(Math.round(data["percents"][key]) + "%");
-        }
-        for (key in data["swings"]) {
-            selector = "#riding-swing-" + key.toLowerCase();
-            $(selector).text(Math.round(data["swings"][key]) + "%");
-        }
-    });
+    riding = ridings[idNumeric]
+    $("#riding-name").text(riding["name"]);
+    for (key in riding["percents"]) {
+        selector = "#riding-result-" + key.toLowerCase();
+        $(selector).text(Math.round(riding["percents"][key]) + "%");
+    }
+    for (key in riding["swings"]) {
+        selector = "#riding-swing-" + key.toLowerCase();
+        $(selector).text(Math.round(riding["swings"][key]) + "%");
+    }
 }
 
 $().ready(function () {
