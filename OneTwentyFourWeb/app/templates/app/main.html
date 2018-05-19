@@ -13,7 +13,29 @@
 {% endblock %}
 
 {% block content %}
+<div class="container poll-container py-3">
+    <h1 class="py-3">Polls</h1>
+    <div class="row">
+        <div class="col-sm poll-box">
+            <h1>Liberals:</h1>
+            <h1 class="info-lib">{{ poll_average.current.LIB|floatformat:2 }}%</h1>
+        </div>
+        <div class="col-sm poll-box">
+            <h1>PC:</h1>
+            <h1 class="info-pc">{{ poll_average.current.PC|floatformat:2 }}%</h1>
+        </div>
+        <div class="col-sm poll-box">
+            <h1>NDP:</h1>
+            <h1 class="info-ndp">{{ poll_average.current.NDP|floatformat:2 }}%</h1>
+        </div>
+        <div class="col-sm poll-box">
+            <h1>Other:</h1>
+            <h1 class="info-oth">{{ poll_average.current.OTH|floatformat:2 }}%</h1>
+        </div>
+    </div>
+</div>
 <div class="container riding-container">
+    <h1 class="py-3 text-center">Riding Map</h1>
     <object id="riding-map" type="image/svg+xml" data="{% static 'app/img/ridings_map.svg' %}">
         Your browser does not support SVG.
     </object>

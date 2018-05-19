@@ -1,3 +1,7 @@
+body {
+    font-family: 'Oswald', sans-serif;
+}
+
 #riding-map {
     width: 75%;
     height: 100vh;
@@ -7,5 +11,11 @@
 #riding-info {
     width: 25%;
     float: right;
-    font-family: 'Oswald', sans-serif;
 }
+
+.poll-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+

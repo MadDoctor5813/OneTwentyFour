@@ -9,7 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime
 import json
 
-from app.models import Riding
+from app.models import Riding, PollAveragePoint
 
 def main(request):
     riding_data = dict()
@@ -20,4 +20,6 @@ def main(request):
         riding_obj['swings'] = riding.swings
         riding_obj['name'] = riding.name
         riding_data[riding.riding_id] = riding_obj
-    return render(request, 'app/main.html', context={'riding_data' : json.dumps(riding_data)})
+    current_average = PollAveragePoint.objects.all().order_by('-date')[0]
+    return render(request, 'app/main.html', context={'riding_data' : riding_data,
+                                                     'poll_average' : current_average})
