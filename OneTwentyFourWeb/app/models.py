@@ -22,13 +22,14 @@ admin.site.register(Riding)
 
 class Poll(models.Model):
     results = pgfields.JSONField(default=None)
+    pollster = models.CharField(max_length=50)
     date = models.DateField()
 
     class Meta:
         ordering = ['-date']
 
     def __str__(self):
-        return f'Poll taken {str(self.date)}'
+        return f'{self.pollster}: {str(self.date)}'
 
 admin.site.register(Poll)
 
