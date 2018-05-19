@@ -49,6 +49,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\models.py" />
+    <Compile Include="app\projection.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\templatetags\party_utils.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\templatetags\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
@@ -69,6 +78,7 @@
     <Folder Include="app\static\app\img\" />
     <Folder Include="app\static\app\css\" />
     <Folder Include="app\static\app\script\" />
+    <Folder Include="app\templatetags\" />
     <Folder Include="C:\Users\Kevin\Documents\Programming\OneTwentyFour\OneTwentyFourWeb\app\static\app\img\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />

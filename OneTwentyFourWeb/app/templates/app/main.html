@@ -1,6 +1,7 @@
 ﻿{% extends 'app/base.html' %}
 
 {% load static %}
+{% load party_utils %}
 
 {% block js %}
 <script type="text/javascript" src="{% static 'app/script/main.js' %}"></script>
@@ -13,6 +14,15 @@
 {% endblock %}
 
 {% block content %}
+<div class="container result-container text-center py-3">
+    <h1 class="text-center py-3">Projection</h1>
+    <h3 class="d-inline">The current projections indicate a </h3>
+    <h3 class="{{ projection.1|party_class}} d-inline">{{projection.1|party_name}}</h3>
+    <h3 class="d-inline">{{ projection.0 }}</h3>
+    <h3 class="d-inline"> with </h3>
+    <h3 class="{{ projection.1|party_class}} d-inline">{{projection.2}}</h3>
+    <h3 class="d-inline"> seats.</h3>
+</div>
 <div class="container poll-container py-3">
     <h1 class="py-3">Polls</h1>
     <div class="row">
