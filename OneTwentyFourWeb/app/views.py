@@ -27,4 +27,4 @@ def main(request):
         riding_data[riding.riding_id] = riding_obj
     return render(request, 'app/main.html', context={'riding_data' : riding_data,
                                                      'poll_average' : current_average,
-                                                     'projection' : projection.result})
+                                                     'projection' : projection})

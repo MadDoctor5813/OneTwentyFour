@@ -17,30 +17,33 @@
 <div class="container result-container text-center py-3">
     <h1 class="text-center py-3">Projection</h1>
     <h3 class="d-inline">The current projections indicate a </h3>
-    <h3 class="{{ projection.1|party_class}} d-inline">{{projection.1|party_name}}</h3>
-    <h3 class="d-inline">{{ projection.0 }}</h3>
+    <h3 class="{{ projection.result.1|party_class}} d-inline">{{projection.result.1|party_name}}</h3>
+    <h3 class="d-inline">{{ projection.result.0 }}</h3>
     <h3 class="d-inline"> with </h3>
-    <h3 class="{{ projection.1|party_class}} d-inline">{{projection.2}}</h3>
+    <h3 class="{{ projection.result.1|party_class}} d-inline">{{projection.result.2}}</h3>
     <h3 class="d-inline"> seats.</h3>
 </div>
 <div class="container poll-container py-3">
-    <h1 class="py-3">Polls</h1>
     <div class="row">
         <div class="col-sm poll-box">
             <h1>Liberals:</h1>
             <h1 class="info-lib">{{ poll_average.current.LIB|floatformat:2 }}%</h1>
+            <h1 class="info-lib">{{ projection.seats.LIB }} seats</h1>
         </div>
         <div class="col-sm poll-box">
             <h1>PC:</h1>
             <h1 class="info-pc">{{ poll_average.current.PC|floatformat:2 }}%</h1>
+            <h1 class="info-pc">{{ projection.seats.PC }} seats</h1>
         </div>
         <div class="col-sm poll-box">
             <h1>NDP:</h1>
             <h1 class="info-ndp">{{ poll_average.current.NDP|floatformat:2 }}%</h1>
+             <h1 class="info-ndp">{{ projection.seats.NDP }} seats</h1>
         </div>
         <div class="col-sm poll-box">
             <h1>Other:</h1>
             <h1 class="info-oth">{{ poll_average.current.OTH|floatformat:2 }}%</h1>
+            <h1 class="info-oth">{{ projection.seats.OTH }} seats</h1>
         </div>
     </div>
 </div>
