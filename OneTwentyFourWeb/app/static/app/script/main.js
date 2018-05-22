@@ -4,11 +4,11 @@ function updateRidingWindow(id) {
     $("#riding-name").text(riding["name"]);
     for (var key in riding["projected"]) {
         var selector = "#riding-result-" + key.toLowerCase();
-        $(selector).text(Math.round(riding["projected"][key]) + "%");
+        $(selector).text(riding["projected"][key].toFixed(2) + "%");
     }
     for (var key in riding["swings"]) {
         var selector = "#riding-swing-" + key.toLowerCase();
-        $(selector).text(Math.round(riding["swings"][key]) + "%");
+        $(selector).text(riding["swings"][key].toFixed(2) + "%");
     }
 }
 

@@ -14,7 +14,7 @@ from app.projection import Projection, project
 
 def main(request):
     riding_data = dict()
-    current_average = PollAveragePoint.objects.all().order_by('-date')[0]
+    current_average = PollAveragePoint.objects.all().order_by('-date', '-pk')[0]
     all_ridings = Riding.objects.all()
     projection = project(all_ridings, current_average)
     for riding in all_ridings:
