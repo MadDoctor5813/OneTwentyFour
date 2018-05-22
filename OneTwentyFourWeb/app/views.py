@@ -25,6 +25,9 @@ def main(request):
         riding_obj['name'] = riding.name
         riding_obj['projected'] = projection.riding_projections[riding.riding_id]
         riding_data[riding.riding_id] = riding_obj
+    for k, v  in current_average.current.items():
+        print(k)
+        print(v)
     return render(request, 'app/main.html', context={'riding_data' : riding_data,
                                                      'poll_average' : current_average,
                                                      'projection' : projection})

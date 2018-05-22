@@ -8,7 +8,7 @@ party_classes = { 'LIB' : 'info-lib',
                   'OTH' : 'info-oth'}
 
 party_names = { 'LIB' : 'Liberal',
-                'PC': 'PC',
+                'PC' : 'PC',
                 'NDP' : 'NDP',
                 'OTH' : 'Other' }
 
@@ -16,7 +16,12 @@ def get_party_class(value):
     return party_classes[value]
 
 def get_party_name(value):
+    print(value)
     return party_names[value]
+
+def lookup(value, key):
+    return value.get(key, None)
 
 register.filter('party_class', get_party_class),
 register.filter('party_name', get_party_name)
+register.filter('lookup', lookup)

@@ -25,26 +25,13 @@
 </div>
 <div class="container poll-container py-3">
     <div class="row">
+        {% for party, average in poll_average.current.items %}
         <div class="col-sm poll-box">
-            <h1>Liberals:</h1>
-            <h1 class="info-lib">{{ poll_average.current.LIB|floatformat:2 }}%</h1>
-            <h1 class="info-lib">{{ projection.seats.LIB }} seats</h1>
+            <h1>{{ party|party_name }}:</h1>
+            <h1 class="{{ party|party_class }}">{{ average|floatformat:2 }}%</h1>
+            <h1 class="{{ party|party_class }}">{{ projection.seats|lookup:party }} seat{{ projection.seats|lookup:party|pluralize }}</h1>
         </div>
-        <div class="col-sm poll-box">
-            <h1>PC:</h1>
-            <h1 class="info-pc">{{ poll_average.current.PC|floatformat:2 }}%</h1>
-            <h1 class="info-pc">{{ projection.seats.PC }} seats</h1>
-        </div>
-        <div class="col-sm poll-box">
-            <h1>NDP:</h1>
-            <h1 class="info-ndp">{{ poll_average.current.NDP|floatformat:2 }}%</h1>
-             <h1 class="info-ndp">{{ projection.seats.NDP }} seats</h1>
-        </div>
-        <div class="col-sm poll-box">
-            <h1>Other:</h1>
-            <h1 class="info-oth">{{ poll_average.current.OTH|floatformat:2 }}%</h1>
-            <h1 class="info-oth">{{ projection.seats.OTH }} seats</h1>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <div class="container riding-container">
