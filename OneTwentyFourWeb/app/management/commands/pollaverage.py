@@ -7,7 +7,7 @@ POLLS_TO_AVERAGE = 6
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        polls = list(Poll.objects.all().order_by('-date, -pk'))
+        polls = list(Poll.objects.all().order_by('-date', '-pk'))
         PollAveragePoint.objects.all().delete()
         #generate an average point for each poll
         for idx in range(len(polls)):
