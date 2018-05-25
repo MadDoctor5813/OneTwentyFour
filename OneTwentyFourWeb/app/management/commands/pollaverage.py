@@ -16,9 +16,10 @@ class Command(BaseCommand):
             polls_used = 0
             for i in range(POLLS_TO_AVERAGE):
                 try:
-                    poll = polls[idx - i]
+                    #add the offset because the polls are reverse sorted by date
+                    poll = polls[idx + i]
                 except IndexError:
-                    #if we go beyond the beginning of the array just break the loop
+                    #if we go beyond the end of the array just break the loop
                     break
                 for party, result in poll.results.items():
                     if average.get(party) is None:
