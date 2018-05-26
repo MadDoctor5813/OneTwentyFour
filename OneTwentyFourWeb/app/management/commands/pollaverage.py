@@ -28,4 +28,6 @@ class Command(BaseCommand):
                 polls_used += 1
             for party, result in average.items():
                 average[party] = average[party] / polls_used
+            #delete any point with this date because this one is newer
+            PollAveragePoint.objects.filter(date=polls[idx].date).delete()
             PollAveragePoint.objects.create(current=average, date=polls[idx].date)
