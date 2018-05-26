@@ -6,7 +6,9 @@
 {% block js %}
 <script type="text/javascript" src="{% static 'app/script/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/script/svg-pan-zoom.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <script type="text/javascript">ridings={{ riding_data|safe }}</script>
+<script type="text/javascript">pastPolls={{ past_polls|safe }}</script>
 {% endblock %}
 
 {% block css %}
@@ -25,7 +27,7 @@
 </div>
 <div class="container poll-container py-3">
     <div class="row">
-        {% for party, average in poll_average.current.items %}
+        {% for party, average in current_average.current.items %}
         <div class="col-sm poll-box">
             <h1>{{ party|party_name }}:</h1>
             <h1 class="{{ party|party_class }}">{{ average|floatformat:2 }}%</h1>
@@ -33,6 +35,9 @@
         </div>
         {% endfor %}
     </div>
+</div>
+<div class="container py-3">
+    <canvas class="d-inline" id="poll_graph" width="1080" height="300"></canvas>
 </div>
 <div class="container riding-container">
     <h1 class="py-3 text-center">Riding Map</h1>

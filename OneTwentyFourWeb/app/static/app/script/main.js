@@ -35,6 +35,49 @@ function colorRiding(idx) {
     console.log(this.resultMax);
 }
 
+initPollGraph = function () {
+    var graphConfig = {
+        type: "line",
+        data: {
+            datasets: []
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    distribution: 'linear',
+                    time: {
+                        min: new Date("2018-05-09"),
+                        max: new Date("2018-06-07"),
+                    }
+                }]
+            }
+        }
+    }
+    pollData = {};
+    for (idx in pastPolls) {
+        averagePoint = pastPolls[idx];
+        for (party in averagePoint.current) {
+            if (!(party in pollData)) {
+                pollData[party] = [];
+            }
+            pollData[party].push({ x: new Date(averagePoint.date), y: averagePoint.current[party] });
+        }
+    }
+    for (party in pollData) {
+        graphConfig.data.datasets.push({
+            label: party,
+            fill: false,
+            backgroundColor: colors[party],
+            borderColor: colors[party],
+            data: pollData[party]
+        })
+    }
+    var canvas = $("#poll_graph")[0];
+    var ctx = canvas.getContext('2d');
+    window.pollGraph = new Chart(ctx, graphConfig);
+}
+
 $().ready(function () {
     svgNode = $("#riding-map")[0];
     //init svg-pan-zoom
@@ -48,4 +91,5 @@ $().ready(function () {
         });
         ridingShapes.each(colorRiding);
     });
+    initPollGraph();
 })

@@ -14,7 +14,11 @@ from app.projection import Projection, project
 
 def main(request):
     riding_data = dict()
-    current_average = PollAveragePoint.objects.all().order_by('-date', '-pk')[0]
+    averages = list(PollAveragePoint.objects.all().order_by('-date', '-pk'))
+    past_polls = list()
+    for average in averages:
+        past_polls.append({ 'current' : average.current, 'date' : str(average.date) })
+    current_average = averages[0]
     all_ridings = Riding.objects.all()
     projection = project(all_ridings, current_average)
     for riding in all_ridings:
@@ -25,9 +29,7 @@ def main(request):
         riding_obj['name'] = riding.name
         riding_obj['projected'] = projection.riding_projections[riding.riding_id]
         riding_data[riding.riding_id] = riding_obj
-    for k, v  in current_average.current.items():
-        print(k)
-        print(v)
     return render(request, 'app/main.html', context={'riding_data' : riding_data,
-                                                     'poll_average' : current_average,
+                                                     'current_average' : current_average,
+                                                     'past_polls' : json.dumps(past_polls),
                                                      'projection' : projection})
