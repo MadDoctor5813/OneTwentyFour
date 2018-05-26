@@ -51,6 +51,19 @@ initPollGraph = function () {
                         max: new Date("2018-06-07"),
                     }
                 }]
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        label += tooltipItem.yLabel.toFixed(2);
+                        return label;
+                    }
+                }
             }
         }
     }
