@@ -13,7 +13,7 @@ with fiona.open('data/2018/districts/districts.shp') as ridings_2018:
         transformed = shapely.affinity.scale(transformed, 0.001, -0.001, origin=(0, 0, 0))
         geos.append(transformed)
     union = shapely.ops.cascaded_union(geos)
-    dwg = svgwrite.Drawing('ridings_map.svg', style='fill: blue; stroke: black')
+    dwg = svgwrite.Drawing('ridings_map.svg', style='fill: blue; stroke: black; stroke-width: 0.5px')
     for riding, geo in zip(ridings_2018, geos):
         geo = shapely.affinity.translate(geo, -union.bounds[0], -union.bounds[1])
         poly = dwg.polygon(geo.exterior.coords, id='riding_' + str(riding['properties']['ED_ID']))
