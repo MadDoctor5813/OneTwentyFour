@@ -1,0 +1,15 @@
+﻿{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/contact.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container contact-container py-3">
+    <h1>Contact:</h1>
+    <p>I can be reached at <a href="mailto:kevin.trieu5813@gmail.com">kevin.trieu5813@gmail.com.</a></p>
+    <p>If you want to see the code that makes this all tick (and honestly you might not want to), take a look at the <a href="https://github.com/MadDoctor5813/OneTwentyFour">GitHub.</a></p>
+</div>
+{% endblock %}

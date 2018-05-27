@@ -33,3 +33,9 @@ def main(request):
                                                      'current_average' : current_average,
                                                      'past_polls' : json.dumps(past_polls),
                                                      'projection' : projection})
+
+def methodology(request):
+    return render(request, 'app/methodology.html')
+
+def contact(request):
+    return render(request, 'app/contact.html')

@@ -87,13 +87,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\css\base.css" />
+    <Content Include="app\static\app\css\contact.css" />
     <Content Include="app\static\app\css\main.css" />
+    <Content Include="app\static\app\css\methodology.css" />
     <Content Include="app\static\app\img\ridings_map.svg" />
     <Content Include="app\static\app\img\taco.png" />
     <Content Include="app\static\app\script\main.js" />
     <Content Include="app\static\app\script\svg-pan-zoom.min.js" />
     <Content Include="app\templates\app\base.html" />
+    <Content Include="app\templates\app\contact.html" />
     <Content Include="app\templates\app\main.html" />
+    <Content Include="app\templates\app\methodology.html" />
     <Content Include="OneTwentyFourWeb\static\dummy.txt" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

@@ -1,0 +1,35 @@
+﻿{% extends 'app/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/methodology.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container method-container py-3">
+    <h1>Methodology:</h1>
+    <p>The core of the model is a uniform swing model. 
+    If a party is performing ten percent better than its popular vote numbers in a previous election, then I assume
+    it will overperform by its individual riding results from that election by ten percent in every riding.</p>
+    <p>The model has two main parts, the projected 2018 results and the polling average.</p>
+    <h3>Projected Results:</h3>
+    <p>The projected 2018 results are derived from 2014 and 2011 election results, with 75% of the projection
+    coming from 2014 results and 25% coming from 2011 results.</p>
+    <p>Because of the redistricting that occurred prior to the 2018 election, results from 2014 and 2011 cannot be
+    directly applied to the current riding map.</p>
+    <p>Shapefiles taken from <a href="https://www.elections.on.ca/en/voting-in-ontario/electoral-district-shapefiles/limited-use-data-product-licence-agreement/download-shapefiles.html">here</a>
+    are used to assign results from each polling location to the 2018 riding they overlap. Stations that overlap multiple ridings are split among those ridings based on
+    the percentage of area they share with each one.</p>
+    <p>Advanced polls are divided with the same method, but using the area overlapped by each riding, since they are reported on a per-riding basis.</p>
+    <h3>Polling Average:</h3>
+    <p>There are many ways to construct a polling average, with weight given to sample size and method. I know nothing
+    about such things.</p>
+    <p>Instead a simple 6 poll rolling average is used.</p>
+    <h3>Putting It All Together:</h3>
+    <p>Using the projected 2018 results, I calculate how much each party under or over performed from its province-wide result.</p>
+    <p>I then add this per-riding swing to the averaged polls and determine the winner of each riding and determine how many seats each party wins.</p>
+    <p>This is used to determine which party will win the most seats and whether they will have a minority or a majority.</p>
+    <h3>Other Factors:</h3>
+    <p>Other sites include factors like incumbency and party leader status in their models. I know nothing about these things also and they are not included.</p>
+</div>
+{% endblock %}
