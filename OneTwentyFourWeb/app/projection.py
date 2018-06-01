@@ -18,6 +18,15 @@ def project(all_ridings, poll_average):
         riding_results = dict()
         for party, swing in riding.swings.items():
             riding_results[party] = swing + poll_average.current[party]
+        min_result = min(riding_results.values())
+        if min_result < 0:
+            #we have a negative result, do some adjustment
+            adjusted_sum = 0
+            for party, result in riding_results.items():
+                riding_results[party] = riding_results[party] + (-min_result)
+                adjusted_sum += riding_results[party]
+            for party, result in riding_results.items():
+                riding_results[party] *= (100 / adjusted_sum)
         projection.riding_projections[riding.riding_id] = riding_results
         winner = find_party_max(riding_results)
         projection.seats[winner] += 1
