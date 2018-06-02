@@ -91,6 +91,58 @@ initPollGraph = function () {
     window.pollGraph = new Chart(ctx, graphConfig);
 }
 
+initSeatGraph = function () {
+    var graphConfig = {
+        type: "line",
+        data: {
+            datasets: []
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: "linear",
+                    ticks: {
+                        min: 0,
+                        max: 127,
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Seat Count'
+                    }
+                }],
+                yAxes: [{
+                    type: "linear",
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Occurrences (out of 500 simulations)'
+                    }
+                }],
+            },
+        }
+    }
+    for (party in seatOutcomes) {
+        var partySeatData = [];
+        for (k in seatOutcomes[party]) {
+            //skip outcomes with no seats
+            if (k == 0) {
+                continue;
+            }
+            partySeatData.push({ x: k, y: seatOutcomes[party][k] });
+        }
+        graphConfig.data.datasets.push({
+            label: party,
+            lineTension: 0.1,
+            fill: true,
+            backgroundColor: colors[party],
+            borderColor: colors[party],
+            data: partySeatData
+        })
+    }
+    var canvas = $("#seat-graph")[0];
+    var ctx = canvas.getContext('2d');
+    window.pollGraph = new Chart(ctx, graphConfig);
+}
+
 $().ready(function () {
     svgNode = $("#riding-map")[0];
     //init svg-pan-zoom
@@ -105,4 +157,5 @@ $().ready(function () {
         ridingShapes.each(colorRiding);
     });
     initPollGraph();
+    initSeatGraph();
 })

@@ -10,7 +10,7 @@ from datetime import datetime
 import json
 
 from app.models import Riding, PollAveragePoint
-from app.projection import Projection, project
+from app.projection import Projection, project, project_random_outcomes
 
 def main(request):
     riding_data = dict()
@@ -20,7 +20,8 @@ def main(request):
         past_polls.append({ 'current' : average.current, 'date' : str(average.date) })
     current_average = averages[0]
     all_ridings = Riding.objects.all()
-    projection = project(all_ridings, current_average)
+    projection = project(all_ridings, current_average.current)
+    seat_outcomes, percent_maj, percent_min = project_random_outcomes(all_ridings, current_average.current)
     for riding in all_ridings:
         riding_obj = dict()
         riding_obj['results'] = riding.results
@@ -31,8 +32,11 @@ def main(request):
         riding_data[riding.riding_id] = riding_obj
     return render(request, 'app/main.html', context={'riding_data' : riding_data,
                                                      'current_average' : current_average,
-                                                     'past_polls' : json.dumps(past_polls),
-                                                     'projection' : projection})
+                                                     'past_polls' : past_polls,
+                                                     'projection' : projection,
+                                                     'seat_outcomes' : seat_outcomes,
+                                                     'percent_maj' : percent_maj,
+                                                     'percent_min' : percent_min})
 
 def methodology(request):
     return render(request, 'app/methodology.html')
