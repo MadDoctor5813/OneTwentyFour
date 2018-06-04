@@ -91,6 +91,14 @@ initPollGraph = function () {
     window.pollGraph = new Chart(ctx, graphConfig);
 }
 
+hexWithOpacity = function(hex, opacity) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+    return "rgba(" + r + ", " + g + ", " + b + ", " + opacity + ")";
+}
+
 initSeatGraph = function () {
     var graphConfig = {
         type: "line",
@@ -133,8 +141,8 @@ initSeatGraph = function () {
             label: party,
             lineTension: 0.1,
             fill: true,
-            backgroundColor: colors[party],
-            borderColor: colors[party],
+            backgroundColor: hexWithOpacity(colors[party], 0.3),
+            borderColor: hexWithOpacity(colors[party], 0.3),
             data: partySeatData
         })
     }
