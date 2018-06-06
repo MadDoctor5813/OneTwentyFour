@@ -47,8 +47,8 @@ initPollGraph = function () {
                     type: 'time',
                     distribution: 'linear',
                     time: {
-                        min: new Date("2018-05-09"),
-                        max: new Date("2018-06-07"),
+                        min: "2018-05-09",
+                        max: "2018-06-07",
                         round: "day",
                     }
                 }]
@@ -75,7 +75,7 @@ initPollGraph = function () {
             if (!(party in pollData)) {
                 pollData[party] = [];
             }
-            pollData[party].push({ x: new Date(averagePoint.date), y: averagePoint.current[party] });
+            pollData[party].push({ x: averagePoint.date, y: averagePoint.current[party] });
         }
     }
     for (party in pollData) {
