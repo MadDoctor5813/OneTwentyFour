@@ -68,8 +68,8 @@ initPollGraph = function () {
         }
     }
     pollData = {};
-    for (idx in pastPolls) {
-        averagePoint = pastPolls[idx];
+    for (var i = 0; i < pastPolls.length; i++) {
+        averagePoint = pastPolls[i];
         for (party in averagePoint.current) {
             if (!(party in pollData)) {
                 pollData[party] = [];
