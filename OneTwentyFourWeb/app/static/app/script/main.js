@@ -49,6 +49,7 @@ initPollGraph = function () {
                     time: {
                         min: new Date("2018-05-09"),
                         max: new Date("2018-06-07"),
+                        round: "day",
                     }
                 }]
             },
