@@ -7,4 +7,4 @@ In addition, you must upload the ridings_2018.json file using `python manage.py 
 
 Polls must be added using the Django admin interface, and `python manage.py pollaverage` must be run to generate the averages.
 
-Live at onetwentyfour.herokuapp.com
+Live at [http://onetwentyfour.herokuapp.com](http://onetwentyfour.herokuapp.com)
